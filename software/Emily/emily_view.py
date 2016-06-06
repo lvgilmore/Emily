@@ -25,7 +25,7 @@ class Emily_view:
             args = self.request_data(request)
             make_response(self.model.create_farm(args))
         else:
-            raise "in Emily_View.farms_api, unknown method: %s" % request.method.to_string()
+            raise("in Emily_View.farms_api, unknown method: %s" % request.method.to_string())
     
     def farm_api(self, farm_id):
         if request.method == 'GET':
@@ -36,7 +36,7 @@ class Emily_view:
         elif request.method == 'DELETE':
             make_response(self.model.delete_farm(farm_id))
         else:
-            raise "in Emily_View.farm_api, unknown method: %s" % request.method.to_string()
+            raise("in Emily_View.farm_api, unknown method: %s" % request.method.to_string())
     
     def farm_members_api(self, farm_id):
         if request.method == 'GET':
@@ -45,7 +45,7 @@ class Emily_view:
             args = self.request_data(request)
             return json.dumps(self.model.create_farm_member(farm_id, args))
         else:
-            raise "in Emily_View.farm_members_api, unknown method: %s" % request.method.to_string()
+            raise("in Emily_View.farm_members_api, unknown method: %s" % request.method.to_string())
         
     def farm_member_api(self, farm_id, member_id):
         if request.method == 'GET':
@@ -53,7 +53,7 @@ class Emily_view:
         elif request.method == 'DELETE':
             return json.dumps(self.model.delete_farm_member(farm_id, member_id))
         else:
-            raise "in Emily_View.farm_member_api, unknown method: %s" % request.method.to_string()
+            raise("in Emily_View.farm_member_api, unknown method: %s" % request.method.to_string())
         
     def request_data(self, request):
         if request.headers['Content-Type'] == 'application/json':
@@ -62,9 +62,9 @@ class Emily_view:
             try:
                 return  json.loads(request.data)
             except:
-                raise "couldn't parse request %s as json" % str(request)
+                raise("couldn't parse request %s as json" % str(request))
         else:
-            raise "unknown content type: %s" % request.headers['Content-Type']
+            raise("unknown content type: %s" % request.headers['Content-Type'])
         
     def view_api(self):
         routes = [
