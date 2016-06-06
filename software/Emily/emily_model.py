@@ -24,6 +24,11 @@ class Emily_Model(object):
         self.indexes = {}
         self.load_farms()
     
+    def load_farms(self):
+        self.farms = self.controller.load_farms()
+        for farm_id, farm in self.farms.items():
+            self.create_indexes(farm_id, farm)
+    
     def get_farms(self):
         return self.farms
     
@@ -99,9 +104,13 @@ class Emily_Model(object):
         return uid
 
     def create_indexes(self, farm_id, farm):
-        pass
+        id_string = str(farm.ip) + ":" + str(farm.port) + "/" + str(farm.location) 
+        self.indexes[id_string] = farm_id
     
 # unit tests
 if __name__ == '__main__':
     model = Emily_Model()
-    print(str(model)
+    print(str(model))
+    for farm in model.get_farms().values():
+        print str(farm)
+    
