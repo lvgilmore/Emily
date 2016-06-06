@@ -80,7 +80,7 @@ class Farm:
         representation = representation + "lb_method: " + str(self.lb_method) + "\n"
         representation = representation + "logger: " + str(self.logger) + "\n"
         representation = representation + "members: \n"
-        for member in self.members:
+        for member in self.members.values():
             representation = representation + "\t" + str(member)
         return representation
 
@@ -96,7 +96,7 @@ class Farm_Member:
         representation = ""
         representation = representation + str(self.url)
         if self.weight is not None and self.weight != "":
-            representation = representation + " weight=" + str(self.url)
+            representation = representation + " weight=" + str(self.weight)
         representation = representation + ";"
         return representation
     

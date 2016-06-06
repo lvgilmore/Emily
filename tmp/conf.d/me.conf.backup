@@ -1,0 +1,10 @@
+upstream me {
+	server first:80;
+	server second:80;
+}
+server {
+	listen 443;
+	location /right/here {
+		proxy_pass http://me;
+	}
+}
